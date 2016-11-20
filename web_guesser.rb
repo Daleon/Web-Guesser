@@ -5,5 +5,5 @@ x_number = rand(100)
 x << x_number
 
 get '/' do
-  "The secret number is #{x}"
+  "The secret number is #{x.first.to_i}"
 end
