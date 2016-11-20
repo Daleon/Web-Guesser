@@ -1,9 +1,12 @@
 require 'sinatra'
+# require_relative './views/index'
 
 x = Array.new
 x_number = rand(100)
 x << x_number
 
-get '/' do
-  "The secret number is #{x.first.to_i}"
+get "/" do
+  num = x.first.to_i
+  "The secret number is #{num}"
+
 end
