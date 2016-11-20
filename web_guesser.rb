@@ -1,6 +1,9 @@
 require 'sinatra'
 
+x = Array.new
+x_number = rand(100)
+x << x_number
+
 get '/' do
-  x = rand(100)
   "The secret number is #{x}"
 end
