@@ -4,9 +4,11 @@ require 'sinatra/reloader'
 set :secret_num, rand(100)
 set :guess_num, 5
 
+
 get '/' do
   guess = params['guess'].to_i
   cheat = params['cheat']
+  msg, color = guesses_left(guess)
   msg = check_guess(guess)
   msg = cheat_mode(msg) if cheat
   erb :index, :locals => {:msg => msg, :color => color}
@@ -16,11 +18,11 @@ def check_guess(guess)
   if guess > settings.secret_num + 5
     ['Way too high!', 'red']
   elsif guess > settings.secret_num
-    ['Too high!', 'salmon']
+    ['Too high!', 'pink']
   elsif guess < settings.secret_num - 5
-    ['Way too low!', 'red']
+    ['Way too low!', 'brown']
   elsif guess < settings.secret_num
-    ['Too low!', 'salmon']
+    ['Too low!', 'blue']
   else
     reset_game
     ["You got it right!<br />The SECRET NUMBER is #{guess}", 'green']
